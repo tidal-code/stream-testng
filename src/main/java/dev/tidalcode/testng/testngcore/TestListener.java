@@ -62,22 +62,27 @@ public class TestListener implements ITestListener, IHookable {
         if ("true".equalsIgnoreCase(PropertiesFinder.getProperty("testng.mode.dryrun"))) {
             return;
         }
+        Request.reset();
+        GlobalData.clean();
         publishResultToZephyrScale(result);
     }
 
     @Override
     public void onTestSkipped(ITestResult result) {
         if ("true".equalsIgnoreCase(PropertiesFinder.getProperty("testng.mode.dryrun"))) {
+            return;
         }
+        Request.reset();
+        GlobalData.clean();
     }
 
     @Override
     public void onTestSuccess(ITestResult result) {
-        Request.reset();
-        GlobalData.clean();
         if ("true".equalsIgnoreCase(PropertiesFinder.getProperty("testng.mode.dryrun"))) {
             return;
         }
+        Request.reset();
+        GlobalData.clean();
         publishResultToZephyrScale(result);
     }
 
